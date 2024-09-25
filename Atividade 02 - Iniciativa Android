@@ -1,0 +1,228 @@
+Atividade 1: Verificador de idade
+
+
+fun main() {
+    print("Por favor, insira sua idade: ")
+    val idade = readLine()?.toIntOrNull()
+
+    if (idade != null) {
+        if (idade >= 18) {
+            println("Você é maior de idade.")
+        } else {
+            println("Você é menor de idade.")
+        }
+    } else {
+        println("Entrada inválida. Por favor, insira um número válido.")
+    }
+}
+
+Atividade 2: Calculadora Simples
+
+fun main() {
+    println("Bem-vindo à Calculadora Simples!")
+    print("Escolha uma operação (+, -, *, /): ")
+    val operacao = readLine()
+
+    print("Digite o primeiro número: ")
+    val num1 = readLine()?.toDoubleOrNull()
+
+    print("Digite o segundo número: ")
+    val num2 = readLine()?.toDoubleOrNull()
+
+    if (num1 != null && num2 != null && operacao != null) {
+        val resultado = when (operacao) {
+            "+" -> num1 + num2
+            "-" -> num1 - num2
+            "*" -> num1 * num2
+            "/" -> if (num2 != 0.0) num1 / num2 else {
+                println("Erro: Divisão por zero não é permitida.")
+                return
+            }
+            else -> {
+                println("Operação inválida. Por favor, escolha entre +, -, *, /.")
+                return
+            }
+        }
+
+        println("O resultado de $num1 $operacao $num2 é: $resultado")
+    } else {
+        println("Entrada inválida. Por favor, insira números válidos.")
+    }
+}
+
+Atividade 3: Verificador de Senha
+
+fun main() {
+    print("Por favor, insira uma senha: ")
+    val senha = readLine()
+
+    if (senha != null) {
+        if (verificarSenha(senha)) {
+            println("Senha válida!")
+        } else {
+            println("Senha inválida. A senha precisa ter pelo menos 8 caracteres e deve conter letras maiúsculas, minúsculas, números e símbolos especiais..")
+        }
+    } else {
+        println("Nenhuma senha foi inserida.")
+    }
+}
+
+fun verificarSenha(senha: String): Boolean {
+    val tamanhoMinimo = 8
+    val temMaiuscula = senha.any { it.isUpperCase() }
+    val temMinuscula = senha.any { it.isLowerCase() }
+    val temNumero = senha.any { it.isDigit() }
+    val temCaractereEspecial = senha.any { !it.isLetterOrDigit() }
+    
+    return senha.length >= tamanhoMinimo && temMaiuscula && temMinuscula && temNumero && temCaractereEspecial
+}
+
+Atividade 4: Conversor de Moedas
+
+fun main() {
+    println("Bem-vindo ao Conversor de Moedas!")
+    print("Digite o valor a ser convertido: ")
+    val valor = readLine()?.toDoubleOrNull()
+
+    println("Escolha a moeda de origem (USD, EUR, BRL): ")
+    val moedaOrigem = readLine()?.uppercase()
+
+    println("Escolha a moeda de destino (USD, EUR, BRL): ")
+    val moedaDestino = readLine()?.uppercase()
+
+    if (valor != null && moedaOrigem != null && moedaDestino != null) {
+        val resultado = converterMoeda(valor, moedaOrigem, moedaDestino)
+        if (resultado != null) {
+            println("O valor convertido de $moedaOrigem para $moedaDestino é: $resultado")
+        } else {
+            println("Conversão inválida. Por favor, verifique as moedas de origem e destino.")
+   
+Atividade 5: Calculadora de IMC (Índice de Massa Corporal)
+
+fun main() {
+    println("Calculadora de IMC (Índice de Massa Corporal)")
+
+    print("Digite seu peso em quilogramas (kg): ")
+    val peso = readLine()?.toDoubleOrNull()
+
+    print("Digite sua altura em metros (m): ")
+    val altura = readLine()?.toDoubleOrNull()
+
+    if (peso != null && altura != null && peso > 0 && altura > 0) {
+        val imc = calcularIMC(peso, altura)
+        val classificacao = classificarIMC(imc)
+
+        println("Seu IMC é: %.2f".format(imc))
+        println("Classificação: $classificacao")
+    } else {
+        println("Entrada inválida. Por favor, insira números válidos para peso e altura.")
+    }
+}
+
+fun calcularIMC(peso: Double, altura: Double): Double {
+    return peso / (altura * altura)
+}
+
+fun classificarIMC(imc: Double): String {
+   
+Atividade 6: Calculadora de Gorjeta
+
+fun main() {
+    println("Calculadora de Gorjeta")
+
+    print("Digite o valor total da conta (em R$): ")
+    val valorConta = readLine()?.toDoubleOrNull()
+
+    print("Digite a porcentagem de gorjeta que deseja dar (%): ")
+    val porcentagemGorjeta = readLine()?.toDoubleOrNull()
+
+    if (valorConta != null && porcentagemGorjeta != null && valorConta > 0 && porcentagemGorjeta >= 0) {
+        val valorGorjeta = calcularGorjeta(valorConta, porcentagemGorjeta)
+        val valorTotal = valorConta + valorGorjeta
+
+        println("Valor da gorjeta: R$ %.2f".format(valorGorjeta))
+        println("Valor total a pagar: R$ %.2f".format(valorTotal))
+    } else {
+        println("Entrada inválida. Por favor, insira valores numéricos válidos para a conta e a porcentagem de gorjeta.")
+    }
+}
+
+fun calcularGorjeta(valorConta: Double, porcentagemGorjeta: Double): Double {
+    return (valorConta * porcentagemGorjeta) / 100
+}
+
+Atividade 7: Jogo de Adivinhação de Números
+
+import kotlin.random.Random
+
+fun main() {
+    val numeroAleatorio = Random.nextInt(1, 101) 
+    var tentativas = 0
+    var adivinhou = false
+
+    println("Bem-vindo ao Jogo de Adivinhação!")
+    println("Estou pensando em um número entre 1 e 100. Tente adivinhar!")
+
+    while (!adivinhou) {
+        print("Digite seu palpite: ")
+        val palpite = readLine()?.toIntOrNull()
+
+        if (palpite != null) {
+            tentativas++
+            when {
+                palpite < numeroAleatorio -> println("Muito baixo! Tente novamente.")
+                palpite > numeroAleatorio -> println("Muito alto! Tente novamente.")
+                else -> {
+                    println("Parabéns! Você acertou o número $numeroAleatorio em $tentativas tentativas.")
+                    adivinhou = true
+                }
+            }
+        } else {
+            println("Entrada inválida. Por favor, digite um número válido.")
+        }
+    }
+}
+
+
+Atividade 8: Conversor de Temperatura (Desafio Extra)
+fun main() {
+    println("Conversor de Temperatura")
+    
+    print("Digite a temperatura a ser convertida: ")
+    val temperatura = readLine()?.toDoubleOrNull()
+
+    if (temperatura == null) {
+        println("Entrada inválida. Por favor, insira um número válido para a temperatura.")
+        return
+    }
+
+    println("Escolha a unidade de origem (C, F, K): ")
+    val unidadeOrigem = readLine()?.uppercase()
+
+    println("Escolha a unidade de destino (C, F, K): ")
+    val unidadeDestino = readLine()?.uppercase()
+
+    if (unidadeOrigem != null && unidadeDestino != null) {
+        val resultado = converterTemperatura(temperatura, unidadeOrigem, unidadeDestino)
+        if (resultado != null) {
+            println("A temperatura convertida de $temperatura°$unidadeOrigem para $unidadeDestino é: %.2f°$unidadeDestino".format(resultado))
+        } else {
+            println("Conversão inválida. Certifique-se de inserir unidades de origem e destino válidas (C, F, K).")
+        }
+    } else {
+        println("Entrada inválida. Por favor, insira as unidades de origem e destino corretamente.")
+    }
+}
+
+fun converterTemperatura(temperatura: Double, unidadeOrigem: String, unidadeDestino: String): Double? {
+    return when (unidadeOrigem to unidadeDestino) {
+        "C" to "F" -> (temperatura * 9/5) + 32
+        "C" to "K" -> temperatura + 273.15
+        "F" to "C" -> (temperatura - 32) * 5/9
+        "F" to "K" -> (temperatura - 32) * 5/9 + 273.15
+        "K" to "C" -> temperatura - 273.15
+        "K" to "F" -> (temperatura - 273.15) * 9/5 + 32
+        "C" to "C", "F" to "F", "K" to "K" -> temperatura // Conversão para a mesma unidade
+        else -> null // Caso a conversão seja inválida
+    }
+}
