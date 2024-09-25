@@ -1,0 +1,47 @@
+fun Atividade01() {
+
+        val nome: String = "Nascimento"
+        var idade: Int = 27
+        var altura: Double = 1.68
+        var ehEstudante: Boolean = false
+
+        println("Nome: $nome")
+        println("Idade: $idade anos")
+        println("Altura: $altura metros")
+        println("É estudante? $ehEstudante")
+
+        idade = 22
+        altura = 1.69
+        ehEstudante = true
+
+
+        println("\n.Atualizado.")
+        println("Nome: $nome")
+        println("Idade: $idade anos")
+        println("Altura: $altura metros")
+        println("É estudante? $ehEstudante")
+}
+
+    val nomeProduto: String = "Apple Iphone 11"
+    val precoUnitario: Double = 4000.00
+    val quantidadeComprada: Int = 15
+    val taxaImposto: Double = 0.15  // 15% de imposto
+    val margemLucro: Double = 0.20  // 20% de margem de lucro desejada
+
+   
+    println("\n Nome do Produto: $nomeProduto")
+    println("\n Preço Unitário: R$ $precoUnitario")
+    println("\n Quantidade Comprada: $quantidadeComprada")
+    println("\n Taxa de Imposto: ${taxaImposto * 100}%")
+    println("\n Margem de Lucro Desejada: ${margemLucro * 100}%")
+
+    val totalSemImposto = precoUnitario * quantidadeComprada
+    println("\n Total Sem Imposto: R$ $totalSemImposto")
+
+    val totalComImposto = totalSemImposto * (1 + taxaImposto)
+    println("\n Total Com Imposto: R$ $totalComImposto")
+
+
+    val precoVenda = totalComImposto * (1 + margemLucro)
+    println("\n Preço de Venda Necessário: R$ $precoVenda")
+}
